@@ -26,7 +26,7 @@ export class LogPage implements OnInit {
     });
   }
 
-  async openLogDetails(log) {
+  async openLogDetails(log: any) {
     (await this.alertCtrl.create({
       header: 'Log Details',
       subHeader: (typeof log === "string" ? log : JSON.stringify(log)),

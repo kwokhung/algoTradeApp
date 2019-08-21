@@ -10,7 +10,7 @@
 </ion-header>
 <ion-content>
   <ion-card>
-    <ion-card-content>
+    <ion-card-content (click)="viewLog()">
       {{time}}
       <h2>
         <span *ngIf="wasTapped" style="color: blue">{{message}}</span>

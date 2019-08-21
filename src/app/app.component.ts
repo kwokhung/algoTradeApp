@@ -19,14 +19,6 @@ export class AppComponent {
     url: '/home',
     icon: 'home'
   }, {
-    title: 'List',
-    url: '/list',
-    icon: 'list'
-  }, {
-    title: 'Notification',
-    url: '/notification',
-    icon: 'warning'
-  }, {
     title: 'Log',
     url: '/log',
     icon: 'clipboard'
@@ -64,16 +56,18 @@ export class AppComponent {
           if (data.title !== 'Notification') {
             this.logger.addLog(data.message);
           }
-
-          this.router.navigate([data.landing_page, { wasTapped: 'true', time: data.time, message: data.message }]);
+          else {
+            this.router.navigate([data.landing_page, { wasTapped: 'true', time: data.time, message: data.message }]);
+          }
         } else {
           console.log('Received in fore ground');
 
           if (data.title !== 'Notification') {
             this.logger.addLog(data.message);
           }
-
-          this.router.navigate([data.landing_page, { wasTapped: 'false', time: data.time, message: data.message }]);
+          else {
+            this.router.navigate([data.landing_page, { wasTapped: 'false', time: data.time, message: data.message }]);
+          }
         }
       });
 

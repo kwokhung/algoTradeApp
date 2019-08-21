@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-notification',
@@ -12,13 +13,20 @@ export class NotificationPage implements OnInit {
   time: string = '';
   message: string = '';
 
-  constructor(private route: ActivatedRoute) {
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
     this.wasTapped = this.route.snapshot.params['wasTapped'] == 'true' ? true : false;
     this.time = this.route.snapshot.params['time'];
     this.message = this.route.snapshot.params['message'];
   }
 
   ngOnInit() {
+  }
+
+  viewLog() {
+    this.router.navigate(['log', {}]);
   }
 
 }
