@@ -1,7 +1,7 @@
 {
-  "name": "algoTradeApp",
+  "name": "algo-trade-app",
   "version": "0.0.1",
-  "author": "Ionic Framework",
+  "author": "MBLinus",
   "homepage": "https://ionicframework.com/",
   "scripts": {
     "ng": "ng",
