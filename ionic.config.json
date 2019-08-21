@@ -1,5 +1,7 @@
 {
   "name": "algoTradeApp",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

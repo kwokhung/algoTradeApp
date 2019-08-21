@@ -1,6 +1,7 @@
 # Global
 npm install -g typescript
 npm install -g cordova
+npm install -g cordova-res
 npm install -g phonegap
 npm install -g ionic
 
