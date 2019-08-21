@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { FCM } from '@ionic-native/fcm/ngx';
+import { LoggerService } from './services/logger/logger.service';
 
 @Component({
   selector: 'app-root',
@@ -28,7 +29,9 @@ export class AppComponent {
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private fcm: FCM,
+    private logger: LoggerService
   ) {
     this.initializeApp();
   }
@@ -37,6 +40,37 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.fcm.getToken().then(token => {
+        console.log(token);
+      });
+
+      this.fcm.onTokenRefresh().subscribe(token => {
+        console.log(token);
+      });
+
+      this.fcm.onNotification().subscribe(data => {
+        console.log(data);
+
+        if (data.wasTapped) {
+          console.log('Received in back ground');
+
+          if (data.title !== 'Notification') {
+            this.logger.addLog(data.message);
+          }
+
+          //this.router.navigate([data.landing_page, { wasTapped: 'true', time: data.time, message: data.message }]);
+        } else {
+          console.log('Received in fore ground');
+
+          if (data.title !== 'Notification') {
+            this.logger.addLog(data.message);
+          }
+
+          //this.router.navigate([data.landing_page, { wasTapped: 'false', time: data.time, message: data.message }]);
+        }
+      });
+
+      this.fcm.subscribeToTopic('algoTrade');
     });
   }
 }
