@@ -59,6 +59,7 @@ ionic g guard "guards/simplyPrevent/simplyPrevent"
 ionic g page "pages/home"
 ionic g page "pages/scan"
 ionic g page "pages/chart"
+ionic g page "pages/log"
 ionic g service "services/logger/logger"
 
 ionic serve
