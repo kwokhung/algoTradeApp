@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Notification
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      {{time}}
+      <h2>
+        <span *ngIf="wasTapped" style="color: blue">{{message}}</span>
+        <span *ngIf="!wasTapped">{{message}}</span>
+      </h2>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

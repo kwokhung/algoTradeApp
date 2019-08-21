@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -13,28 +14,29 @@ import { LoggerService } from './services/logger/logger.service';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
-  public appPages = [
-    {
-      title: 'Home',
-      url: '/home',
-      icon: 'home'
-    },
-    {
-      title: 'List',
-      url: '/list',
-      icon: 'list'
-    },
-    {
-      title: 'Log',
-      url: '/log',
-      icon: 'clipboard'
-    }
-  ];
+  public appPages = [{
+    title: 'Home',
+    url: '/home',
+    icon: 'home'
+  }, {
+    title: 'List',
+    url: '/list',
+    icon: 'list'
+  }, {
+    title: 'Notification',
+    url: '/notification',
+    icon: 'warning'
+  }, {
+    title: 'Log',
+    url: '/log',
+    icon: 'clipboard'
+  }];
 
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
+    private router: Router,
     private fcm: FCM,
     private logger: LoggerService
   ) {
@@ -63,7 +65,7 @@ export class AppComponent {
             this.logger.addLog(data.message);
           }
 
-          //this.router.navigate([data.landing_page, { wasTapped: 'true', time: data.time, message: data.message }]);
+          this.router.navigate([data.landing_page, { wasTapped: 'true', time: data.time, message: data.message }]);
         } else {
           console.log('Received in fore ground');
 
@@ -71,11 +73,12 @@ export class AppComponent {
             this.logger.addLog(data.message);
           }
 
-          //this.router.navigate([data.landing_page, { wasTapped: 'false', time: data.time, message: data.message }]);
+          this.router.navigate([data.landing_page, { wasTapped: 'false', time: data.time, message: data.message }]);
         }
       });
 
       this.fcm.subscribeToTopic('algoTrade');
     });
   }
+
 }
