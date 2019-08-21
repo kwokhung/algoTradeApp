@@ -46,6 +46,10 @@ npm install --save @ionic-native/barcode-scanner
 ionic cordova plugin add cordova-plugin-bluetooth-serial
 npm install --save @ionic-native/bluetooth-serial
 
+# fcm
+ionic cordova plugin add cordova-plugin-fcm-with-dependecy-updated
+npm install --save @ionic-native/fcm
+
 ionic g module "modules/share"
 ionic g component "components/hello"
 ionic g component "components/chartA"
