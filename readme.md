@@ -3,7 +3,19 @@ npm install -g typescript
 npm install -g cordova
 npm install -g phonegap
 npm install -g ionic
-npm install -g @ionic/cli-plugin-proxy
+
+0. ionic start algoTradeApp sidemenu
+
+1. Init Repo (VSCode)
+
+2. Create Repo (GitHub REST API)
+-> curl -u 'kwokhung' https://api.github.com/user/repos -d '{"name":"algoTradeApp"}'
+
+3. Remote Add Origin
+-> git remote add origin https://github.com/kwokhung/algoTradeApp
+
+4. Push Origin Master
+-> git push -u origin master
 
 # Tools
 npm install --save-dev --save-exact typescript@latest
@@ -33,7 +45,6 @@ npm install --save @ionic-native/barcode-scanner
 ionic cordova plugin add cordova-plugin-bluetooth-serial
 npm install --save @ionic-native/bluetooth-serial
 
-ionic start algoTradeApp blank --type=angular
 ionic g module "modules/share"
 ionic g component "components/hello"
 ionic g component "components/chartA"
@@ -44,17 +55,6 @@ ionic g page "pages/home"
 ionic g page "pages/scan"
 ionic g page "pages/chart"
 ionic g service "services/logger/logger"
-
-1. Init Repo (VSCode)
-
-2. Create Repo (GitHub REST API)
--> curl -u 'kwokhung' https://api.github.com/user/repos -d '{"name":"algoTradeApp"}'
-
-3. Remote Add Origin
--> git remote add origin https://github.com/kwokhung/algoTradeApp
-
-4. Push Origin Master
--> git push -u origin master
 
 ionic serve
 
