@@ -48,25 +48,20 @@ export class AppComponent {
       });
 
       this.fcm.onNotification().subscribe(data => {
-        console.log(data);
+        console.log(JSON.stringify(data));
 
         if (data.wasTapped) {
-          console.log('Received in back ground');
+          console.log('wasTapped');
 
-          if (data.title !== 'Notification') {
-            this.logger.addLog(data.message);
-          }
-          else {
-            this.router.navigate([data.landing_page, { wasTapped: 'true', time: data.time, message: data.message }]);
-          }
+          this.router.navigate(['notification', { wasTapped: 'true', time: data.time, message: data.message }]);
         } else {
-          console.log('Received in fore ground');
+          console.log('not wasTapped');
 
-          if (data.title !== 'Notification') {
+          if (data.title === 'Notification') {
+            this.router.navigate(['notification', { wasTapped: 'false', time: data.time, message: data.message }]);
+          } else {
+            console.log(data.message);
             this.logger.addLog(data.message);
-          }
-          else {
-            this.router.navigate([data.landing_page, { wasTapped: 'false', time: data.time, message: data.message }]);
           }
         }
       });
